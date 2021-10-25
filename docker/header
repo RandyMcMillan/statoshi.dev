@@ -20,6 +20,7 @@ ARG CARBON_VERSION=${CARBON_VERSION}
 ARG GRAPHITE_VERSION=${GRAPHITE_VERSION}
 ARG STATSD_VERSION=${STATSD_VERSION}
 ARG GRAFANA_VERSION=${GRAFANA_VERSION}
+ARG GRAFANA_ARCH=${GRAFANA_ARCH}
 ARG DJANGO_VERSION=${DJANGO_VERSION}
 ARG PROJECT_NAME=${PROJECT_NAME}
 ARG DOCKER_BUILD_TYPE=${DOCKER_BUILD_TYPE}
@@ -64,6 +65,7 @@ ENV CARBON_VERSION=${CARBON_VERSION}
 ENV GRAPHITE_VERSION=${GRAPHITE_VERSION}
 ENV STATSD_VERSION=${STATSD_VERSION}
 ENV GRAFANA_VERSION=${GRAFANA_VERSION}
+ENV GRAFANA_ARCH=${GRAFANA_ARCH}
 ENV DJANGO_VERSION=${DJANGO_VERSION}
 ENV PROJECT_NAME=${PROJECT_NAME}
 ENV DOCKER_BUILD_TYPE=${DOCKER_BUILD_TYPE}
@@ -115,8 +117,8 @@ FROM set-initial-env as grafana-download
 
 ENV GRAFANA_VERSION=7.0.0
 RUN mkdir -p /tmp/grafana \
-  && wget -P /tmp/ https://dl.grafana.com/oss/release/grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz \
-  && tar xfz /tmp/grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz --strip-components=1 -C /tmp/grafana
+  && wget -P /tmp/ https://dl.grafana.com/oss/release/grafana-${GRAFANA_VERSION}.linux-${GRAFANA_ARCH}.tar.gz \
+  && tar xfz /tmp/grafana-${GRAFANA_VERSION}.linux-${GRAFANA_ARCH}.tar.gz --strip-components=1 -C /tmp/grafana
 
 RUN df -H
 ########################################

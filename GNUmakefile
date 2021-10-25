@@ -8,6 +8,13 @@ export THIS_FILE
 TIME									:= $(shell date +%s)
 export TIME
 
+ARCH                                    := $(shell uname -m)
+export ARCH
+ifeq ($(ARCH),x86_64)
+GRAFANA_ARCH                            := amd64
+endif
+export GRAFANA_ARCH
+
 ifeq ($(user),)
 ## USER retrieved from env, UID from shell.
 #HOST_USER								?=  $(strip $(if $(USER),$(USER),nodummy))
