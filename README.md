@@ -99,15 +99,16 @@ Use as base image in DockerFile:
 
 
 ##### $ <code>make</code>
+make[1]: Entering directory '/home/runner/work/statoshi.dev/statoshi.dev'
 
 	[ARGUMENTS]	
       args:
-        - HOME=/Users/git
-        - PWD=/Users/git/stats.bitcoincore.dev
+        - HOME=/home/runner
+        - PWD=/home/runner/work/statoshi.dev/statoshi.dev
         - UMBREL=false
         - THIS_FILE=GNUmakefile
-        - TIME=1624647164
-        - HOST_USER=root
+        - TIME=1635287295
+        - HOST_USER=runner
         - HOST_UID=0
         - PUBLIC_PORT=80
         - NODE_PORT=8333
@@ -119,25 +120,25 @@ Use as base image in DockerFile:
         - STATSD_VERSION=0.8.6
         - GRAFANA_VERSION=7.0.0
         - DJANGO_VERSION=2.2.24
-        - PROJECT_NAME=stats.bitcoincore.dev
+        - PROJECT_NAME=statoshi.dev
         - DOCKER_BUILD_TYPE=all
         - SLIM=false
-        - DOCKERFILE=stats.bitcoincore.dev
+        - DOCKERFILE=statoshi.dev
         - DOCKERFILE_BODY=docker/statoshi.all
-        - GIT_USER_NAME=randymcmillan
-        - GIT_USER_EMAIL=randy.lee.mcmillan@gmail.com
+        - GIT_USER_NAME=
+        - GIT_USER_EMAIL=
         - GIT_SERVER=https://github.com
-        - GIT_PROFILE=bitcoincore-dev
+        - GIT_PROFILE=randymcmillan
         - GIT_BRANCH=master
-        - GIT_HASH=b25c70d61919b1801f133bc72eb473c1ccce9032
-        - GIT_REPO_ORIGIN=git@github.com:bitcoincore-dev/stats.bitcoincore.dev.git
-        - GIT_REPO_NAME=stats.bitcoincore.dev
-        - GIT_REPO_PATH=/Users/git/stats.bitcoincore.dev
-        - DOCKERFILE=stats.bitcoincore.dev
-        - DOCKERFILE_PATH=/Users/git/stats.bitcoincore.dev/stats.bitcoincore.dev
-        - BITCOIN_CONF=/Users/git/stats.bitcoincore.dev/conf/bitcoin.conf
-        - BITCOIN_DATA_DIR=/Users/git/.bitcoin
-        - STATOSHI_DATA_DIR=/Users/git/.statoshi
+        - GIT_HASH=2fae8a7b1e3ee0f3af70fa825333d2d390c7ddae
+        - GIT_REPO_ORIGIN=https://github.com/RandyMcMillan/statoshi.dev
+        - GIT_REPO_NAME=statoshi.dev
+        - GIT_REPO_PATH=/home/runner/statoshi.dev
+        - DOCKERFILE=statoshi.dev
+        - DOCKERFILE_PATH=/home/runner/statoshi.dev/statoshi.dev
+        - BITCOIN_CONF=/home/runner/statoshi.dev/conf/bitcoin.conf
+        - BITCOIN_DATA_DIR=/home/runner/.bitcoin
+        - STATOSHI_DATA_DIR=/home/runner/.statoshi
         - NOCACHE=
         - VERBOSE=
         - PUBLIC_PORT=80
@@ -153,7 +154,7 @@ Use as base image in DockerFile:
 
 		make header user=root
 		make shell  user=root
-		make shell  user=root
+		make shell  user=runner
 
 	[EXTRA_ARGUMENTS]:	set build variables	
 
@@ -193,3 +194,4 @@ Use as base image in DockerFile:
 	
 	stats-prune                # default in bitcoin.conf is prune=1 - start pruning node
 	
+make[1]: Leaving directory '/home/runner/work/statoshi.dev/statoshi.dev'

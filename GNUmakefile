@@ -13,6 +13,9 @@ export ARCH
 ifeq ($(ARCH),x86_64)
 GRAFANA_ARCH                            := amd64
 endif
+ifeq ($(ARCH),arm64)
+GRAFANA_ARCH                            := arm64
+endif
 export GRAFANA_ARCH
 
 ifeq ($(user),)

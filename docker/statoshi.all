@@ -10,10 +10,10 @@ FROM config-final as clone-stats-bitcoincore-dev
 ###########################################
 ENV REPO=stats.bitcoincore.dev
 # Change to your fork
-RUN git clone -b master ${GIT_SERVER}/${GIT_PROFILE}/${GIT_REPO_NAME} --depth 2 ${iGIT_REPO_NAME}
+RUN git clone -b master ${GIT_SERVER}/${GIT_PROFILE}/${GIT_REPO_NAME} --depth 2 ${GIT_REPO_NAME}
 #RUN cd ${REPO} 
 #RUN ${REPO}/conf/usr/local/bin/get-branches.sh
-RUN mkdir -p ${REPO}/depends/SDKs
+RUN mkdir -p ${GIT_REPO_NAME}/depends/SDKs
 
 ################################################
 FROM clone-stats-bitcoincore-dev as make-depends
@@ -41,8 +41,7 @@ RUN cd ${GIT_REPO_NAME}  && ./configure --disable-wallet --disable-tests --disab
 FROM configure as make
 ######################
 
-RUN cd ${GIT_REPO_NAME} && make -f Makefile -j $(nproc)
-RUN cd ${GIT_REPO_NAME} && make install
+RUN cd ${GIT_REPO_NAME}  && make -f Makefile && make install
 
 ###########################
 FROM make as strip-binaries
@@ -96,7 +95,7 @@ RUN apk add --no-cache gnupg
 RUN gpg --import  ${GIT_REPO_NAME}/conf/usr/local/bin/randymcmillan2.asc
 #RUN gpg --refresh-keys
 
-RUN while read fingerprint keyholder_name; do gpg --keyserver hkps://keys.openpgp.org --recv-keys ${fingerprint}; done <  ${iGIT_REPO_NAME}/conf/usr/local/bin/keys.txt
+RUN while read fingerprint keyholder_name; do gpg --keyserver hkps://keys.openpgp.org --recv-keys ${fingerprint}; done <  ${GIT_REPO_NAME}/conf/usr/local/bin/keys.txt
 
 RUN gpg --verify ${GIT_REPO_NAME}/conf/usr/local/bin/bitcoind.gpg    ${GIT_REPO_NAME}/conf/usr/local/bin/bitcoind
 
