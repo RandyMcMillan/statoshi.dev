@@ -113,7 +113,7 @@ GIT_USER_EMAIL							:= $(shell git config user.email)
 export GIT_USER_EMAIL
 GIT_SERVER								:= https://github.com
 export GIT_SERVER
-GIT_PROFILE								:= bitcoincore-dev
+GIT_PROFILE								:= randymcmillan
 export GIT_PROFILE
 GIT_BRANCH								:= $(shell git rev-parse --abbrev-ref HEAD)
 export GIT_BRANCH
