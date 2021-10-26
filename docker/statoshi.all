@@ -6,7 +6,7 @@ FROM config-final as clone-stats-bitcoincore-dev
 ###########################################
 
 # Change to your fork
-RUN git clone -b master https://github.com/bitcoincore-dev/stats.bitcoincore.dev --depth 2 /home/root/stats.bitcoincore.dev
+RUN git clone -b master https://github.com/bitcoincore-dev/stats.bitcoincore.dev --depth 5 /home/root/stats.bitcoincore.dev
 WORKDIR /home/root/stats.bitcoincore.dev
 #RUN cd /home/root/stats.bitcoincore.dev
 #RUN ./conf/usr/local/bin/get-branches.sh
@@ -18,9 +18,9 @@ FROM clone-stats-bitcoincore-dev as make-depends
 
 # Install before autogen.sh and configure
 #RUN make -j $(nproc) download -C /home/root/stats.bitcoincore.dev/depends
-RUN apk add libzmq
-RUN pip3 install pyzmq
-RUN python3 /home/root/stats.bitcoincore.dev/contrib/zmq/zmq_sub.py &
+#RUN apk add libzmq
+#RUN pip3 install pyzmq
+#RUN python3 /home/root/stats.bitcoincore.dev/contrib/zmq/zmq_sub.py &
 
 ############################
 FROM make-depends as autogen
